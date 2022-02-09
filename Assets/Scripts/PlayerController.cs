@@ -26,7 +26,7 @@ public class PlayerController : MonoBehaviour
 
         if (horiInput != 0)
         {
-            Debug.Log("Torque applied! " + horiInput + " torque units.");
+            // Debug.Log("Torque applied! " + horiInput + " torque units.");
         }
 
     }
