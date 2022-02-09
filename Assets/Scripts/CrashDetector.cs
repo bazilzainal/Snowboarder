@@ -5,10 +5,15 @@ using UnityEngine.SceneManagement;
 
 public class CrashDetector : MonoBehaviour
 {
-    private void OnTriggerEnter2D(Collider2D other) {
-        if (other.tag == "Ground") {
+    [SerializeField] float loadDelay = 1f;
+    [SerializeField] GameManager gm;
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.tag == "Ground")
+        {
             Debug.Log("Crashed! HOWCAN");
-            SceneManager.LoadScene(0);
+            gm.Invoke("ReloadScene", loadDelay);
 
         }
     }
