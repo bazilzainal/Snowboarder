@@ -6,13 +6,15 @@ using UnityEngine.SceneManagement;
 public class Finish : MonoBehaviour
 {
     [SerializeField] float loadDelay = 1f;
-
     [SerializeField] GameManager gm;
-    private void OnTriggerEnter2D(Collider2D other) {
-        if (other.tag == "Player") {
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.tag == "Player")
+        {
+            GetComponentInChildren<ParticleSystem>().Play();
             Debug.Log("Finished!");
             gm.Invoke("ReloadScene", loadDelay);
-            GetComponentInChildren<ParticleSystem>().Play();
         }
     }
 }

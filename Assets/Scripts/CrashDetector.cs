@@ -14,9 +14,9 @@ public class CrashDetector : MonoBehaviour
     {
         if (other.tag == "Ground")
         {
+            crashParticles.Play();
             Debug.Log("Crashed! HOWCAN");
             gm.Invoke("ReloadScene", loadDelay);
-            crashParticles.Play();
         }
     }
 }
