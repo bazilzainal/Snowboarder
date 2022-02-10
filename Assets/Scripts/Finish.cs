@@ -12,6 +12,7 @@ public class Finish : MonoBehaviour
         if (other.tag == "Player") {
             Debug.Log("Finished!");
             gm.Invoke("ReloadScene", loadDelay);
+            GetComponentInChildren<ParticleSystem>().Play();
         }
     }
 }
