@@ -6661,7 +6661,7 @@ SurfaceEffector2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 918297492}
-  m_Enabled: 1
+  m_Enabled: 0
   m_UseColliderMask: 1
   m_ColliderMask:
     serializedVersion: 2
@@ -12654,6 +12654,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   torqueApplied: 35
   slopeEffector: {fileID: 918297497}
+  canMove: 0
 --- !u!114 &1693989424
 MonoBehaviour:
   m_ObjectHideFlags: 0

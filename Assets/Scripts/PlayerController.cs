@@ -6,36 +6,51 @@ public class PlayerController : MonoBehaviour
 {
     [SerializeField] float torqueApplied = 1f;
     [SerializeField] SurfaceEffector2D slopeEffector;
+    [SerializeField] bool canMove;
     Rigidbody2D rb2d;
 
-    // Start is called before the first frame update
     void Start()
     {
         rb2d = GetComponent<Rigidbody2D>();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
+        canMove = true;
     }
 
     private void FixedUpdate()
     {
-        bool verInput = Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.W);
-
-        float horiInput = Input.GetAxis("Horizontal");
-        rb2d.AddTorque(horiInput * -torqueApplied);
-
-        if (verInput)
+        if (canMove)
         {
-            slopeEffector.enabled = true;
-            // Debug.Log("Torque applied! " + horiInput + " torque units.");
+            RotatePlayer();
+            MovePlayer();
         }
         else
         {
             slopeEffector.enabled = false;
         }
+    }
 
+    public void DisableControls()
+    {
+        canMove = false;
+    }
+
+    void RotatePlayer()
+    {
+        float horiInput = Input.GetAxis("Horizontal");
+        rb2d.AddTorque(horiInput * -torqueApplied);
+
+    }
+
+    void MovePlayer()
+    {
+        bool verInput = Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.W);
+        // Some janky code here
+        if (verInput)
+        {
+            slopeEffector.enabled = true;
+        }
+        else
+        {
+            slopeEffector.enabled = false;
+        }
     }
 }

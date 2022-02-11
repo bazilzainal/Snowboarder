@@ -21,6 +21,9 @@ public class Finish : MonoBehaviour
 
             // Reload scene
             gm.Invoke("ReloadScene", loadDelay);
+
+            // Set Player canMove to false
+            GetComponent<PlayerController>().DisableControls();
         }
     }
 }

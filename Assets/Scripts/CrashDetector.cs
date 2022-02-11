@@ -25,6 +25,9 @@ public class CrashDetector : MonoBehaviour
 
             // Reload scene
             gm.Invoke("ReloadScene", loadDelay);
+
+            // Stop moving
+            GetComponent<PlayerController>().DisableControls();
         }
     }
 }
