@@ -9,11 +9,16 @@ public class CrashDetector : MonoBehaviour
     [SerializeField] GameManager gm;
     [SerializeField] ParticleSystem crashParticles;
     [SerializeField] AudioClip crashSFX;
+    bool crashed = false;
+
+    private void Start() {
+        crashed = false;
+    }
 
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.tag == "Ground")
+        if (other.tag == "Ground" && !crashed)
         {
             Debug.Log("Crashed! HOWCAN");
 
@@ -28,6 +33,8 @@ public class CrashDetector : MonoBehaviour
 
             // Stop moving
             GetComponent<PlayerController>().DisableControls();
+
+            crashed = true;
         }
     }
 }

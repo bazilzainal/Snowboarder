@@ -7,11 +7,18 @@ public class Finish : MonoBehaviour
 {
     [SerializeField] float loadDelay = 1f;
     [SerializeField] GameManager gm;
+    [SerializeField] bool finished = false;
+
+    // private void Start()
+    // {
+    //     finished = false;
+    // }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.tag == "Player")
+        if (other.tag == "Player" && !finished)
         {
+            finished = true;
             Debug.Log("Finished!");
             // Play particles
             GetComponentInChildren<ParticleSystem>().Play();
@@ -23,7 +30,8 @@ public class Finish : MonoBehaviour
             gm.Invoke("ReloadScene", loadDelay);
 
             // Set Player canMove to false
-            GetComponent<PlayerController>().DisableControls();
+            other.GetComponent<PlayerController>().DisableControls();
+
         }
     }
 }
