@@ -12,8 +12,14 @@ public class Finish : MonoBehaviour
     {
         if (other.tag == "Player")
         {
-            GetComponentInChildren<ParticleSystem>().Play();
             Debug.Log("Finished!");
+            // Play particles
+            GetComponentInChildren<ParticleSystem>().Play();
+
+            // Play sound
+            GetComponent<AudioSource>().Play();
+
+            // Reload scene
             gm.Invoke("ReloadScene", loadDelay);
         }
     }
